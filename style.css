@@ -1,0 +1,106 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #6441A4, #4b367c, #402e67, #2f2147);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+}
+
+.slot-machine {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Adjust spacing inside the slot machine */
+    align-items: center; /* Center content horizontally */
+    width: 90%; /* Adjust based on preference and screen size */
+    max-width: 1000px; /* Maximum size to maintain aesthetics */
+    height: 80vh; /* Adjust to take up most of the viewport, ensuring visibility */
+    background: #FFF;
+    border-radius: 20px;
+    padding: 2vh; /* Responsive padding based on viewport height */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.reels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Reels container takes the full width of .slot-machine */
+    max-height: 50vh; /* Limiting the height to maintain aspect ratio of reels */
+}
+
+.reel {
+    width: 30%; /* Adjust based on design preference */
+    height: 60vh; /* Assuming the reel's height is 60vh */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    margin: 0 1%;
+}
+
+.symbol img, .symbols-container img {
+    width: 100%; /* Ensure symbols fill the reel width */
+    height: 20vh; /* One-third of the reel's height */
+    object-fit: contain; /* Prevent distortion */
+}
+
+
+.symbols-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure this matches the reel's height for proper calculation */
+}
+
+.symbols-container img {
+    width: 100%; /* Ensure symbols fill the reel width */
+    height: 20vh; /* One-third of the reel's height */
+    object-fit: contain; /* Prevent distortion */
+}
+
+.spin-button {
+    padding: 15px;
+    background-color: #9146FF;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease; /* Smooth transition for the background color */
+}
+
+.spin-button:hover, .spin-button:focus {
+    background-color: #a65fff; /* Lighter purple on hover/focus for a visual effect */
+    outline: none; /* Remove focus border */
+}
+
+.spin-button:active {
+    background-color: #7e3ff2; /* Slightly darker purple on click */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow for a "pressed" effect */
+}
+
+.chatter-name {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.chatter-name.win {
+    color: #FFD700; /* Gold color */
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
