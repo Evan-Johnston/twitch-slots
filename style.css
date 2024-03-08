@@ -1,0 +1,245 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #6441A4, #4b367c, #402e67, #2f2147);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+}
+
+.slot-machine {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
+    background: #FFF;
+    border-radius: 20px;
+    padding: 2vh;
+    box-shadow: 0 0 30px rgba(240, 240, 240, 0.2);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.slot-machine.glow {
+    box-shadow: 0 0 50px gold, 0 0 70px gold, 0 0 100px gold;
+}
+
+
+.reels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 50vh;
+}
+
+.reel {
+    width: 30%;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    margin: 0 1%;
+}
+
+.symbol img, .symbols-container img {
+    width: 100%;
+    height: 20vh;
+    object-fit: contain;
+}
+
+.symbols-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.spin-button {
+    padding: 15px;
+    background-color: #9146FF;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    opacity: 0;
+}
+
+.spin-button:hover, .spin-button:focus {
+    background-color: #a65fff;
+    outline: none;
+}
+
+.spin-button:active {
+    background-color: #7e3ff2;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.menu-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 8px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+.toggle-menu {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-bottom-left-radius: 8px;
+}
+
+.menu-content {
+    display: none; /* Initially hidden, displayed on toggle */
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 78vh;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background for glass effect */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border to enhance the glass effect */
+    backdrop-filter: blur(10px); /* Blur effect for the glassmorphism */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1010;
+    overflow: auto; /* Changed from 'hidden' to 'auto' to allow scrolling */
+}
+
+
+.leaderboard {
+    width: 90%;
+    max-width: 800px;
+    background: #EFEFEF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.leaderboard-entry {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.leaderboard-entry:last-child {
+    border-bottom: none;
+}
+
+.player-name, .player-balance, .player-spins {
+    text-align: center;
+}
+
+.player-name {
+    font-size: 1.1rem;
+    color: #6441A4;
+    font-weight: 600;
+}
+
+.player-balance, .player-spins {
+    font-size: 1rem;
+    color: #4b367c;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated-background {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    /* Define a gradient background with Twitch's shades of purple */
+    background: linear-gradient(-45deg, #a54d41, #4b367c, #402e67, #3462c7);
+    background-size: 200% 200%; /* Make the background larger to enable the moving effect */
+    animation: moveBackground 10s ease infinite; /* Apply the animation */
+}
+
+#winAnnouncement {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 48px;
+    font-weight: bold;
+    color: gold;
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border: 4px solid gold;
+    padding: 20px;
+    background-color: rgba(255, 215, 0, 0.3); /* Light gold background with transparency */
+    filter: drop-shadow(0 0 10px gold); /* Adds a glow effect */
+    text-shadow: 0 0 10px gold, 0 0 20px #ff00ff, 0 0 30px #00ffff; /* Adds sparkles */
+    border-radius: 20px; /* Rounds the corners */
+}
+
+#winAnnouncement.show {
+    opacity: 1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.chatter-name {
+    font-size: 24px;
+    font-weight: bold;
+
+}
