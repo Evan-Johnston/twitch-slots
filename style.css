@@ -15,27 +15,27 @@ body, html {
 .slot-machine {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; /* Adjust spacing inside the slot machine */
-    align-items: center; /* Center content horizontally */
-    width: 90%; /* Adjust based on preference and screen size */
-    max-width: 1000px; /* Maximum size to maintain aesthetics */
-    height: 80vh; /* Adjust to take up most of the viewport, ensuring visibility */
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
     background: #FFF;
     border-radius: 20px;
-    padding: 2vh; /* Responsive padding based on viewport height */
+    padding: 2vh;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .reels {
     display: flex;
     justify-content: space-between;
-    width: 100%; /* Reels container takes the full width of .slot-machine */
-    max-height: 50vh; /* Limiting the height to maintain aspect ratio of reels */
+    width: 100%;
+    max-height: 50vh;
 }
 
 .reel {
-    width: 30%; /* Adjust based on design preference */
-    height: 60vh; /* Assuming the reel's height is 60vh */
+    width: 30%;
+    height: 60vh;
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
@@ -44,22 +44,15 @@ body, html {
 }
 
 .symbol img, .symbols-container img {
-    width: 100%; /* Ensure symbols fill the reel width */
-    height: 20vh; /* One-third of the reel's height */
-    object-fit: contain; /* Prevent distortion */
+    width: 100%;
+    height: 20vh;
+    object-fit: contain;
 }
-
 
 .symbols-container {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Ensure this matches the reel's height for proper calculation */
-}
-
-.symbols-container img {
-    width: 100%; /* Ensure symbols fill the reel width */
-    height: 20vh; /* One-third of the reel's height */
-    object-fit: contain; /* Prevent distortion */
+    height: 100%;
 }
 
 .spin-button {
@@ -70,17 +63,17 @@ body, html {
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
-    transition: background-color 0.3s ease; /* Smooth transition for the background color */
+    transition: background-color 0.3s ease;
 }
 
 .spin-button:hover, .spin-button:focus {
-    background-color: #a65fff; /* Lighter purple on hover/focus for a visual effect */
-    outline: none; /* Remove focus border */
+    background-color: #a65fff;
+    outline: none;
 }
 
 .spin-button:active {
-    background-color: #7e3ff2; /* Slightly darker purple on click */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow for a "pressed" effect */
+    background-color: #7e3ff2;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .chatter-name {
@@ -90,17 +83,125 @@ body, html {
 }
 
 .chatter-name.win {
-    color: #FFD700; /* Gold color */
+    color: #FFD700;
     font-weight: bold;
     animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.menu-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 8px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+.toggle-menu {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-bottom-left-radius: 8px;
+}
+
+.menu-content {
+    display: none; /* Initially hidden, displayed on toggle */
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 78vh;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background for glass effect */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border to enhance the glass effect */
+    backdrop-filter: blur(10px); /* Blur effect for the glassmorphism */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1010;
+    overflow: auto; /* Changed from 'hidden' to 'auto' to allow scrolling */
+}
+
+
+.leaderboard {
+    width: 90%;
+    max-width: 800px;
+    background: #EFEFEF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.leaderboard-entry {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.leaderboard-entry:last-child {
+    border-bottom: none;
+}
+
+.player-name, .player-balance, .player-spins {
+    text-align: center;
+}
+
+.player-name {
+    font-size: 1.1rem;
+    color: #6441A4;
+    font-weight: 600;
+}
+
+.player-balance, .player-spins {
+    font-size: 1rem;
+    color: #4b367c;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
     }
     50% {
-        transform: scale(1.1);
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }
 
+.animated-background {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    /* Define a gradient background with Twitch's shades of purple */
+    background: linear-gradient(-45deg, #a54d41, #4b367c, #402e67, #3462c7);
+    background-size: 200% 200%; /* Make the background larger to enable the moving effect */
+    animation: moveBackground 10s ease infinite; /* Apply the animation */
+}
